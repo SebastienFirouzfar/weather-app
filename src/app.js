@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
-const port = process.env.PORT || 3000;
 // console.log(__dirname)
 
+
+//connect heroku
+let port = process.env.PORT;
 
 //pour acceder à la page templates de views 
 //avant templates,  views était le dossier qui contenaie
@@ -71,7 +73,7 @@ app.get('/weather', (req, res) => {
             res.send({
                 forecast: forecastData,
                 location,
-                address : req.query.address
+                address: req.query.address
             })
         })
     })
@@ -123,4 +125,9 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(console.log('succes' + port));
+// app.listen(3000, () => console.log("Server Up and running"));
+//Connect port heroku
+if (port == null || port == "") {
+    port = 3000;
+}
+app.listen(port);
