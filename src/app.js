@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
+const port = process.env.PORT || 3000;
 // console.log(__dirname)
 
 
@@ -122,4 +123,4 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => console.log('succes'));
+app.listen(console.log('succes' + port));
