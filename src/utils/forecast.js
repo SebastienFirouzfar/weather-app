@@ -7,7 +7,8 @@ const forecast = (latitude, longitude, callback) =>{
         }else if(body.error){
             callback('Unable to find location', undefined)
         }else{
-            callback(undefined,body.coord.lon + ' in Belgium ' + body.coord.lat)
+            // callback(undefined,body.weather[0].description + ' it s currently ' + main.temp + body.coord.lat)
+           callback(undefined, body.weather[0].description.charAt(0).toUpperCase() + body.weather[0].description + "! It's currently "+ body.main.temp + " degrees out. This hight today is "+ body.main.temp_max + " with a low of "+ body.main.temp_min +". There is " + body.main.humidity + " % of humidity.")
         }
     })
 }
